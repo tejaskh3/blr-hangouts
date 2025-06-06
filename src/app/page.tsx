@@ -1,11 +1,12 @@
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Gallery from '@/components/Gallery';
-import Image from 'next/image';
+import FamousGuests from '@/components/FamousGuests';
 export default function Home() {
   return (
     <main className="min-h-screen">
       <Hero />
+      <FamousGuests />
       <About />
       <Gallery />
       
@@ -78,7 +79,7 @@ export default function Home() {
       <footer className="bg-black py-12 text-white">
         <div className="container mx-auto px-4 text-center">
           <p className="mb-4">
-            Built with ❤️ by Tejas and [Friend Name]
+            Built with ❤️ by <a href="https://x.com/taashuu_" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">Tejas</a>
           </p>
           <div className="flex justify-center space-x-4">
             <a
