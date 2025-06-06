@@ -40,7 +40,7 @@ function Hero() {
           transition={{ delay: 0.2, duration: 0.5 }}
           className="mt-4 text-base md:text-lg text-neutral-600 dark:text-neutral-300"
         >
-          Join our community of passionate developers, designers, and tech enthusiasts in the National Capital Region.
+          Join our community of passionate developers, designers, and tech enthusiasts in the NCR.
         </motion.p>
 
         <motion.div
