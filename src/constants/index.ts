@@ -1,0 +1,1 @@
+export const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/E6bywh2lPGC8PrM8z8UWyn";

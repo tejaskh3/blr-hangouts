@@ -5,7 +5,7 @@ import { useState } from 'react';
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  // Replace these with your actual images
+  // TODO: Add the images
   const images = [
     { src: '/images/gallery1.jpg', alt: 'Hangout at Park' },
     { src: '/images/gallery2.jpg', alt: 'Café Discussion' },
@@ -19,10 +19,10 @@ const Gallery = () => {
     <section className="bg-gray-50 py-20">
       <div className="container mx-auto px-4">
         <h2 className="mb-12 text-center text-4xl font-bold text-gray-900">
-          Our Gallery
+          Gallery
         </h2>
         <p className="mb-12 text-center text-lg text-gray-600">
-          We've hosted 50+ hangouts with groups ranging from 2 to 20 people — and counting.
+          We've hosted 52+ hangouts with groups ranging from 2 to 30 people — and counting.
         </p>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
