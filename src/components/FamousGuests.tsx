@@ -43,8 +43,8 @@ export default function FamousGuests() {
   return (
     <section className="bg-black py-16">
       <div className="container mx-auto px-4">
-        <h2 className="mb-10 text-3xl md:text-4xl font-bold text-white text-center">
-        <TypewriterEffectSmooth words={words} />
+        <h2 className="mb-2 text-3xl md:text-4xl font-bold text-white text-center">
+        <TypewriterEffectSmooth words={words} className="sm:text-3xl"/>
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center">
           {GUESTS.map((guest) => (
