@@ -25,7 +25,7 @@ const Gallery = () => {
           Gallery
         </h2>
         <p className="mb-12 text-center text-lg text-neutral-400">
-          We've hosted 52+ hangouts with groups ranging from 2 to 30 people — and counting.
+          We&apos;ve hosted 52+ hangouts with groups ranging from 2 to 30 people — and counting.
         </p>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">

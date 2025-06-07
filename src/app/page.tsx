@@ -2,7 +2,6 @@ import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Gallery from '@/components/Gallery';
 import FamousGuests from '@/components/FamousGuests';
-import { WHATSAPP_GROUP_LINK } from '@/constants';
 import { Linkedin, Twitter, Github } from "lucide-react";
 import Timeline from '@/components/Timeline';
 import Maintainers from '@/components/Maintainers';

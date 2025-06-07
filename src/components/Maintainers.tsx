@@ -1,6 +1,6 @@
 "use client";
+
 import { Mail, Twitter, Linkedin, Github } from "lucide-react";
-import { Pacifico } from "next/font/google";
 
 const MAINTAINERS = [
   {
