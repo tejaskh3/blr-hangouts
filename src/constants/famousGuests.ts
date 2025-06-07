@@ -39,6 +39,6 @@ export const GUESTS = [
     name: "Amit Prakash (Tejas)",
     handle: "twts_tejas",
     link: "https://x.com/twts_tejas",
-    description: "Senior Software Engineer 2 at Boeing, Engineering Leader/Mentor at RealDevSquad 💜",
+    description: "Software Engineer at Boeing, Engineering Leader/Mentor at RealDevSquad 💜",
   }
 ];
