@@ -4,6 +4,8 @@ import Gallery from '@/components/Gallery';
 import FamousGuests from '@/components/FamousGuests';
 import { WHATSAPP_GROUP_LINK } from '@/constants';
 import { Linkedin, Twitter, Github } from "lucide-react";
+import Timeline from '@/components/Timeline';
+import Maintainers from '@/components/Maintainers';
 export default function Home() {
   return (
     <main className="min-h-screen">
@@ -11,6 +13,8 @@ export default function Home() {
       <FamousGuests />
       <About />
       <Gallery />
+      <Timeline />
+      <Maintainers />
       
       {/* Upcoming Hangout Section */}
       <section className="bg-black py-20">
@@ -29,8 +33,18 @@ export default function Home() {
               <p className="mb-4 text-neutral-400">
                 Starbucks, Khan Market, New Delhi
               </p>
+              <div className="flex justify-center space-x-4 mb-6">
+                <a
+                  href="https://twitter.com/ncrHangouts"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-500"
+                >
+                  <Twitter className="w-6 h-6" />
+                </a>
+              </div>
               <a
-                href={WHATSAPP_GROUP_LINK}
+                href={"https://twitter.com/ncrHangouts"}
                 target="_blank"
                 className="inline-block rounded-full bg-white px-8 py-3 text-lg font-semibold text-black transition hover:bg-gray-200"
               >
