@@ -35,4 +35,10 @@ export const GUESTS = [
     link: "https://x.com/imdigitalashish",
     description: "Google developer expert |  National Awards In Web and AI🥇 ",
   },
+  {
+    name: "Amit Prakash (Tejas)",
+    handle: "twts_tejas",
+    link: "https://x.com/twts_tejas",
+    description: "Senior Software Engineer 2 at Boeing, Engineering Leader/Mentor at RealDevSquad 💜",
+  }
 ];
