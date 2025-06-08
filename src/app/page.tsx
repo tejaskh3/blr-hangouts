@@ -70,6 +70,37 @@ export default function Home() {
         </div>
       </section>
 
+      {/* BLR Hangouts under NCR Hangouts Section */}
+      <section className="bg-black py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            About BLR Hangouts
+          </h2>
+          <p className="text-lg text-neutral-300 mb-6 max-w-2xl mx-auto">
+            BLR Hangouts is a community initiative for Bangalore, created as a subsidiary of <span className="font-semibold text-purple-400">NCR Hangouts</span>.<br />
+            We are all about connecting, learning, and growing together!
+          </p>
+          <div className="flex justify-center space-x-4">
+            <a
+              href="https://ncrhangouts.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block rounded-full bg-white px-6 py-3 text-lg font-semibold text-black transition hover:bg-gray-200"
+            >
+              Visit NCR Hangouts
+            </a>
+            <a
+              href="https://twitter.com/ncrHangouts"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block rounded-full bg-blue-500 px-6 py-3 text-lg font-semibold text-white transition hover:bg-blue-600"
+            >
+              Follow NCR Hangouts on Twitter
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-black py-12 text-white">
         <div className="container mx-auto px-4 text-center">
