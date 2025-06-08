@@ -22,7 +22,7 @@ function Hero() {
           }}
           className="text-2xl md:text-5xl lg:text-6xl font-bold text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto mb-4"
         >
-          NCR-Hangouts
+          BLR-Hangouts
         </motion.h1>
         <motion.div
           className="inline-block"
@@ -102,7 +102,7 @@ function Hero() {
           transition={{ delay: 0.2, duration: 0.5 }}
           className="mt-4 text-base md:text-lg text-neutral-600 dark:text-neutral-300"
         >
-          Join our community of passionate developers, designers, and tech enthusiasts in the NCR.
+          Join our community of passionate developers, designers, and tech enthusiasts in the BLR.
         </motion.p>
 
         <motion.div
@@ -119,12 +119,13 @@ function Hero() {
           >
             Join WhatsApp Group
           </a>
-          <a
-            href="#rsvp"
-            className="rounded-full bg-white px-6 py-4 font-semibold text-black transition hover:bg-gray-100 text-xl"
+          <button
+            disabled
+            className="rounded-full bg-gray-300 px-6 py-4 font-semibold text-gray-500 cursor-not-allowed text-xl flex items-center gap-2"
           >
             RSVP for Next Hangout
-          </a>
+            <span className="text-sm bg-gray-400 text-white px-2 py-1 rounded-full">Coming Soon</span>
+          </button>
         </motion.div>
       </div>
     </HeroHighlight>

@@ -6,39 +6,34 @@ export const GUESTS = [
     description: "Founder, mentor & coach at RealDevSquad, Batman of X spaces💜",
   },
   {
-    name: "Manu Arora",
-    handle: "mannupaaji",
-    link: "https://twitter.com/mannupaaji",
-    description: "Founder of Acternity UI, Make your websites look 10x beautiful",
-  },
-  {
-    name: "Shruti Kapoor",
-    handle: "shrutikapoor08",
-    link: "https://twitter.com/shrutikapoor08",
-    description: "Your favorite content creator on youtube, who teaches react and web dev stuff",
-  },
-  {
     name: "Akanksha Dharkar",
     handle: "AkankshaKana",
     link: "https://twitter.com/AkankshaKana",
     description: "Frontend Developer, who loves to help women in tech",
   },
   {
-    name: "Anuj Verma",
-    handle: "devanujhere",
-    link: "https://twitter.com/devanujhere",
-    description: "Your friendly neighbourhood AI enthusiast | Dev @Atlassian",
-  },
-  {
-    name: "Ashish Kumar Verma",
-    handle: "imdigitalashish",
-    link: "https://x.com/imdigitalashish",
-    description: "Google developer expert |  National Awards In Web and AI🥇 ",
-  },
-  {
     name: "Amit Prakash (Tejas)",
     handle: "twts_tejas",
     link: "https://x.com/twts_tejas",
     description: "Software Engineer at Boeing, Engineering Leader/Mentor at RealDevSquad 💜",
-  }
+  },
+  {
+    name: "Vinit Khandal",
+    handle: "Vinit717",
+    link: "https://x.com/Vinit717",
+    description: "UI engineer at Juspay, core member of RealDevSquad 💜",
+  },
+  {
+    name: "Prakash Chaudhary",
+    handle: "prakashh_07",
+    link: "https://x.com/prakashh_07",
+    description: "Software Engineer at Yudek, Engineering Leader/Mentor at RealDevSquad 💜",
+  },
+  {
+    name: "Yash Raj",
+    handle: "yesyash_",
+    link: "https://x.com/yesyash_",
+    description: "Software Engineer II at Parbook, Engineering Leader/Mentor at RealDevSquad 💜",
+  },
+
 ];

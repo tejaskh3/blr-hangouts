@@ -28,9 +28,9 @@ const About = () => {
     <section className="bg-black py-24">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="mb-8 text-4xl md:text-5xl font-extrabold text-white">About NCR Hangouts</h2>
+          <h2 className="mb-8 text-4xl md:text-5xl font-extrabold text-white">About BLR Hangouts</h2>
           <p className="mb-6 text-lg md:text-xl text-neutral-300 font-medium">
-            We&apos;re a casual community of <span className="font-bold text-white">150+ techies</span> in Delhi NCR. No agenda, no slides.<br/>
+            We&apos;re a casual community of <span className="font-bold text-white">150+ techies</span> in Bengaluru BLR. No agenda, no slides.<br/>
             Just honest convos over chai, coffee, park benches, Starbucks, malls and good vibes.
           </p>
           <p className="mb-10 text-lg md:text-xl text-neutral-400">

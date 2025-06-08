@@ -24,17 +24,17 @@ export default function Home() {
             </h2>
             <div className="mb-8 rounded-lg bg-neutral-900 p-6 border border-neutral-800">
               <h3 className="mb-2 text-2xl font-semibold text-white">
-                NCR Devs Coffee Meetup
+                BLR Devs Coffee Meetup
               </h3>
               <p className="mb-4 text-lg text-neutral-400">
                 Sunday, June 8th 2025 at 11:00 AM
               </p>
               <p className="mb-4 text-neutral-400">
-                Starbucks, Khan Market, New Delhi
+                Starbucks, Khan Market, New Bengaluru
               </p>
               <div className="flex justify-center space-x-4 mb-6">
                 <a
-                  href="https://twitter.com/ncrHangouts"
+                  href="https://twitter.com/BLRHangouts"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-400 hover:text-blue-500"
@@ -43,7 +43,7 @@ export default function Home() {
                 </a>
               </div>
               <a
-                href={"https://twitter.com/ncrHangouts"}
+                href={"https://twitter.com/BLRHangouts"}
                 target="_blank"
                 className="inline-block rounded-full bg-white px-8 py-3 text-lg font-semibold text-black transition hover:bg-gray-200"
               >

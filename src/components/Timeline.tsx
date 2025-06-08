@@ -6,7 +6,7 @@ const TIMELINE = [
     title: "First Ever Hangout",
     date: "15th Sep 2024",
     img: "/images/gallery10.jpeg",
-    desc: "Our very first casual meetup in Delhi NCR.",
+    desc: "Our very first casual meetup in Bengaluru BLR.",
   },
   {
     title: "Coffee & Code",
