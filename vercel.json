@@ -1,4 +1,0 @@
-{
-    "buildCommand": "pnpm store prune && pnpm install --prefer-offline=false && pnpm build"
-}
-  
