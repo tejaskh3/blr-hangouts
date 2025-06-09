@@ -33,7 +33,7 @@ export const GUESTS = [
     name: "Yash Raj",
     handle: "yesyash_",
     link: "https://x.com/yesyash_",
-    description: "Software Engineer II at Parbook, Engineering Leader/Mentor at RealDevSquad 💜",
+    description: "Software Engineer II at Pagarbook, Engineering Leader/Mentor at RealDevSquad 💜",
   },
 
 ];
