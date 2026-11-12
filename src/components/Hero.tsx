@@ -1,135 +1,76 @@
 "use client";
+
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { HeroHighlight, Highlight } from "./ui/hero-highlight";
-import { WHATSAPP_GROUP_LINK } from "@/constants";
+import { ArrowRight } from "lucide-react";
+import { STATS, WHATSAPP_GROUP_LINK } from "@/constants";
+import { buttonStyles } from "./primitives";
 
-function Hero() {
+const ease = [0.22, 1, 0.36, 1] as const;
+
+const PHOTOS = [
+  { src: "/images/gallery1.jpeg", alt: "The community at a food court hangout" },
+  { src: "/images/gallery3.jpeg", alt: "Friends after an escape-room win" },
+  { src: "/images/gallery9.jpeg", alt: "Group photo at a café" },
+];
+
+export default function Hero() {
   return (
-    <HeroHighlight>
-      <div className="relative z-10 flex h-full flex-col items-center justify-center text-center pt-4 pb-0">
-        <motion.h1
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          animate={{
-            opacity: 1,
-            y: [20, -5, 0],
-          }}
-          transition={{
-            duration: 0.5,
-            ease: [0.4, 0.0, 0.2, 1],
-          }}
-          className="text-2xl md:text-5xl lg:text-6xl font-bold text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto mb-4"
-        >
-          BLR-Hangouts
-        </motion.h1>
+    <section id="top" className="pt-32 pb-16 md:pt-40 md:pb-24">
+      <div className="mx-auto max-w-5xl px-5 sm:px-8">
         <motion.div
-          className="inline-block"
-          initial="hidden"
-          animate="visible"
-          variants={{
-            visible: { transition: { staggerChildren: 0.25 } },
-          }}
-        >
-          <Highlight className="text-white text-xl md:text-3xl lg:text-4xl font-bold px-4 py-2 bg-[#8b5cf6] bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg inline-block">
-            <motion.span
-              variants={{
-                hidden: { opacity: 0, x: -40 },
-                visible: { opacity: 1, x: 0 },
-              }}
-              transition={{ duration: 0.5 }}
-              className="inline-block"
-            >
-              New&nbsp;
-            </motion.span>
-            <motion.span
-              variants={{
-                hidden: { opacity: 0, x: -40 },
-                visible: { opacity: 1, x: 0 },
-              }}
-              transition={{ duration: 0.5, delay: 0.25 }}
-              className="inline-block"
-            >
-              people,&nbsp;
-            </motion.span>
-            <motion.span
-              variants={{
-                hidden: { opacity: 0, x: -40 },
-                visible: { opacity: 1, x: 0 },
-              }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="inline-block"
-            >
-              new&nbsp;
-            </motion.span>
-            <motion.span
-              variants={{
-                hidden: { opacity: 0, x: -40 },
-                visible: { opacity: 1, x: 0 },
-              }}
-              transition={{ duration: 0.5, delay: 0.75 }}
-              className="inline-block"
-            >
-              experiences,&nbsp;
-            </motion.span>
-            <motion.span
-              variants={{
-                hidden: { opacity: 0, x: -40 },
-                visible: { opacity: 1, x: 0 },
-              }}
-              transition={{ duration: 0.5, delay: 1 }}
-              className="inline-block"
-            >
-              new&nbsp;
-            </motion.span>
-            <motion.span
-              variants={{
-                hidden: { opacity: 0, x: -40 },
-                visible: { opacity: 1, x: 0 },
-              }}
-              transition={{ duration: 0.5, delay: 1.25 }}
-              className="inline-block"
-            >
-              learnings
-            </motion.span>
-          </Highlight>
-        </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="mt-4 text-base md:text-lg text-neutral-600 dark:text-neutral-300"
+          transition={{ duration: 0.6, ease }}
+          className="mx-auto max-w-3xl text-center"
         >
-          Join our community of passionate developers, designers, and tech enthusiasts in the BLR.
-        </motion.p>
+          <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1 text-xs text-muted">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            A casual tech community in Bengaluru
+          </p>
+          <h1 className="text-4xl font-semibold tracking-tight text-fg sm:text-6xl md:text-7xl md:leading-[1.05]">
+            New people, new experiences, <span className="text-accent">new learnings.</span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted">
+            Developers, designers and tech enthusiasts in BLR, meeting over chai and coffee. No agenda, no slides.
+          </p>
+          <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+            <a href={WHATSAPP_GROUP_LINK} target="_blank" rel="noopener noreferrer" className={buttonStyles.primary}>
+              Join the WhatsApp group
+              <ArrowRight className="h-4 w-4" />
+            </a>
+            <a href="#moments" className={buttonStyles.secondary}>
+              See the moments
+            </a>
+          </div>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-          className="mt-8 flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
+          transition={{ duration: 0.8, delay: 0.15, ease }}
+          className="mt-16 grid grid-cols-3 gap-3 md:mt-20 md:gap-4"
         >
-          <a
-            href={WHATSAPP_GROUP_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full bg-green-500 px-6 py-4 font-semibold text-white transition hover:bg-green-600 text-xl"
-          >
-            Join WhatsApp Group
-          </a>
-          <button
-            disabled
-            className="rounded-full bg-gray-300 px-6 py-4 font-semibold text-gray-500 cursor-not-allowed text-xl flex items-center gap-2"
-          >
-            RSVP for Next Hangout
-            <span className="text-sm bg-gray-400 text-white px-2 py-1 rounded-full">Coming Soon</span>
-          </button>
+          {PHOTOS.map((p, i) => (
+            <div
+              key={p.src}
+              className={`relative overflow-hidden rounded-2xl bg-surface-2 ${i === 1 ? "aspect-[3/4]" : "aspect-[3/4] translate-y-6 md:translate-y-10"}`}
+            >
+              <Image src={p.src} alt={p.alt} fill priority sizes="33vw" className="object-cover" />
+            </div>
+          ))}
         </motion.div>
+
+        <dl className="mx-auto mt-20 grid max-w-3xl grid-cols-2 gap-y-8 border-t border-line pt-10 text-center md:mt-28 md:grid-cols-4">
+          {STATS.map((s) => (
+            <div key={s.label}>
+              <dt className="sr-only">{s.label}</dt>
+              <dd className="text-3xl font-semibold tracking-tight text-fg">{s.value}</dd>
+              <dd className="mt-1 text-sm text-muted">{s.label}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
-    </HeroHighlight>
+    </section>
   );
 }
-
-export default Hero;
