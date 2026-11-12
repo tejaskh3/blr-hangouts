@@ -1,71 +1,59 @@
-"use client";
 import Image from "next/image";
-
-const TIMELINE = [
-  {
-    title: "First Ever Hangout",
-    date: "15th Sep 2024",
-    img: "/images/gallery10.jpeg",
-    desc: "Our very first casual meetup in Bengaluru BLR.",
-  },
-  {
-    title: "Coffee & Code",
-    date: "Oct 2024",
-    img: "/images/gallery2.jpeg",
-    desc: "A fun session at Starbucks with new friends.",
-  },
-  {
-    title: "Park Tech Talks",
-    date: "Dec 2024",
-    img: "/images/gallery3.jpeg",
-    desc: "Open-air discussions and networking in the park.",
-  },
-];
+import { TIMELINE } from "@/constants";
+import { Reveal, Section, SectionHeading, Soft } from "./primitives";
 
 export default function Timeline() {
   return (
-    <section className="bg-black py-20">
-      <div className="container mx-auto px-4">
-        <h2 className="mb-12 text-center text-4xl font-bold text-white">
-          Our Journey So Far
-        </h2>
-        <div className="relative flex flex-col items-center">
-          <div className="absolute left-1/2 top-0 h-full w-1 bg-gradient-to-b from-purple-500/40 to-transparent -translate-x-1/2" />
-          <div className="space-y-16 w-full max-w-2xl z-10">
-            {TIMELINE.map((item, idx) => (
-              <div key={idx} className="flex items-center space-x-6">
-                <div className="flex-shrink-0">
-                  <div className="w-24 h-24 rounded-xl overflow-hidden border-4 border-purple-500/40 shadow-lg">
-                    <Image
-                      src={item.img}
-                      alt={item.title}
-                      width={96}
-                      height={96}
-                      className="object-cover w-full h-full"
-                    />
-                  </div>
+    <Section id="journey">
+      <SectionHeading
+        eyebrow="Our journey"
+        align="center"
+        title={
+          <>
+            From one table to <Soft>a tribe.</Soft>
+          </>
+        }
+      />
+
+      <ol className="relative mx-auto max-w-4xl">
+        <div
+          aria-hidden
+          className="absolute bottom-0 left-[19px] top-2 w-px bg-line-strong md:left-1/2"
+        />
+        {TIMELINE.map((item, i) => {
+          const right = i % 2 === 1;
+          return (
+            <li key={item.title} className="relative mb-14 pl-14 md:mb-20 md:grid md:grid-cols-2 md:gap-16 md:pl-0">
+              <span
+                aria-hidden
+                className="absolute left-[12px] top-3 grid h-[15px] w-[15px] place-items-center rounded-full border-2 border-accent bg-white md:left-1/2 md:-translate-x-1/2"
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+              </span>
+              <Reveal className={right ? "md:col-start-2" : "md:text-right"}>
+                <p className="text-sm font-medium text-accent">{item.date}</p>
+                <h3 className="mt-1 text-xl font-semibold tracking-tight text-fg">{item.title}</h3>
+                <p className="mt-2 text-muted">{item.desc}</p>
+              </Reveal>
+              <Reveal
+                delay={0.1}
+                className={`mt-5 md:mt-0 ${right ? "md:col-start-1 md:row-start-1" : ""}`}
+              >
+                <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-surface-2">
+                  <Image src={item.img} alt={item.title} fill sizes="(max-width: 768px) 90vw, 420px" className="object-cover" />
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                  <div className="text-sm text-purple-300 mb-1">{item.date}</div>
-                  <p className="text-neutral-300">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-            {/* Coming soon badge */}
-            <div className="flex items-center space-x-6">
-              <div className="w-24 h-24 flex items-center justify-center rounded-xl bg-purple-900/40 border-4 border-purple-700/40">
-                <span className="animate-bounce text-purple-300 font-bold">?</span>
-              </div>
-              <div>
-                <span className="inline-block rounded-full bg-purple-700 px-4 py-2 text-white font-semibold shadow-lg animate-pulse">
-                  More coming soon...
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+              </Reveal>
+            </li>
+          );
+        })}
+        <li className="relative pl-14 md:pl-0 md:text-center">
+          <span
+            aria-hidden
+            className="absolute left-[12px] top-1 h-[15px] w-[15px] rounded-full border-2 border-dashed border-line-strong bg-white md:left-1/2 md:-translate-x-1/2"
+          />
+          <p className="relative inline-block bg-white text-muted md:mt-8 md:px-3">And the next chapter is yours.</p>
+        </li>
+      </ol>
+    </Section>
   );
 }

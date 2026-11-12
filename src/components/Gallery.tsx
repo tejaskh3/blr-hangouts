@@ -1,84 +1,148 @@
-"use client"
-import Image from 'next/image';
-import { useState } from 'react';
+"use client";
 
-const Gallery = () => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+import Image from "next/image";
+import { useCallback, useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronLeft, ChevronRight, Expand, X } from "lucide-react";
+import { GALLERY } from "@/constants";
+import { Reveal, Section, SectionHeading, Soft } from "./primitives";
 
-  // TODO: Add the images
-  const images = [
-    { src: '/images/gallery1.jpeg', alt: 'Hangout at Park' },
-    { src: '/images/gallery2.jpeg', alt: 'Café Discussion' },
-    { src: '/images/gallery3.jpeg', alt: 'Group Photo' },
-    { src: '/images/gallery4.jpeg', alt: 'Tech Talk' },
-    { src: '/images/gallery5.jpeg', alt: 'Networking' },
-    { src: '/images/gallery6.jpeg', alt: 'Chai Time' },
-    { src: '/images/gallery7.jpeg', alt: 'Chai Time' },
-    { src: '/images/gallery8.jpeg', alt: 'Chai Time' },
-    { src: '/images/gallery9.jpeg', alt: 'Chai Time' },
-  ];
+// Bento spans for a 4-column grid, in GALLERY order.
+const SPANS = [
+  "md:col-span-2 md:row-span-2",
+  "md:col-span-2",
+  "",
+  "",
+  "md:col-span-2",
+  "",
+  "",
+  "md:col-span-2",
+  "md:col-span-2",
+];
+
+export default function Gallery() {
+  const [index, setIndex] = useState<number | null>(null);
+
+  const close = useCallback(() => setIndex(null), []);
+  const step = useCallback(
+    (d: number) => setIndex((i) => (i === null ? i : (i + d + GALLERY.length) % GALLERY.length)),
+    [],
+  );
+
+  useEffect(() => {
+    if (index === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+      if (e.key === "ArrowRight") step(1);
+      if (e.key === "ArrowLeft") step(-1);
+    };
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [index, close, step]);
+
+  const current = index === null ? null : GALLERY[index];
 
   return (
-    <section className="bg-black py-20">
-      <div className="container mx-auto px-4">
-        <h2 className="mb-12 text-center text-4xl font-bold text-white">
-          Gallery
-        </h2>
-        <p className="mb-12 text-center text-lg text-neutral-400">
-          We&apos;ve hosted 52+ hangouts with groups ranging from 2 to 30 people — and counting.
-        </p>
+    <Section id="moments" className="bg-surface">
+      <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <SectionHeading
+          eyebrow="Moments"
+          title={
+            <>
+              52+ hangouts <Soft>and counting.</Soft>
+            </>
+          }
+          lede="Groups ranging from 2 to 30 people: food courts, cafés, escape rooms and late-night walks."
+        />
+      </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className="group relative aspect-square cursor-pointer overflow-hidden rounded-lg border border-purple-500/20"
-              onClick={() => setSelectedImage(image.src)}
+      <div className="grid auto-rows-[180px] grid-cols-2 gap-3 sm:auto-rows-[220px] md:grid-cols-4 md:gap-4">
+        {GALLERY.map((img, i) => (
+          <Reveal key={img.src} delay={(i % 4) * 0.06} className={`${SPANS[i] ?? ""} ${i === 0 ? "col-span-2 row-span-2" : ""}`}>
+            <button
+              type="button"
+              onClick={() => setIndex(i)}
+              className="group relative block h-full w-full overflow-hidden rounded-xl bg-surface-2"
+              aria-label={`Open photo: ${img.alt}`}
             >
               <Image
-                src={image.src}
-                alt={image.alt}
+                src={img.src}
+                alt={img.alt}
                 fill
-                className="object-cover transition-transform duration-300 group-hover:scale-110"
+                sizes="(max-width: 768px) 50vw, 33vw"
+                className="object-cover transition duration-700 ease-out group-hover:scale-[1.03]"
               />
-              <div className="absolute inset-0 transition-opacity duration-300 " />
-            </div>
-          ))}
-        </div>
-
-        {/* Lightbox */}
-        {selectedImage && (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90"
-            onClick={() => setSelectedImage(null)}
-          >
-            <div className="relative h-[80vh] w-[80vw]">
-              <Image
-                src={selectedImage}
-                alt="Selected image"
-                fill
-                className="object-contain"
-              />
-              <button
-                className="absolute right-4 top-4 rounded-full bg-white p-2 text-black"
-                onClick={() => setSelectedImage(null)}
-              >
-                ✕
-              </button>
-            </div>
-          </div>
-        )}
-
-        <div className="relative">
-          <div className="absolute bottom-0 right-0 mb-4 mr-4 flex items-center space-x-2">
-            <span className="animate-bounce rounded-full bg-purple-700 px-4 py-2 text-white font-semibold shadow-lg">
-              More coming soon...
-            </span>
-          </div>
-        </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 transition duration-300 group-hover:opacity-100" />
+              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 text-left opacity-0 transition duration-300 group-hover:opacity-100">
+                <span className="text-sm text-white">{img.alt}</span>
+                <Expand className="h-4 w-4 shrink-0 text-white" />
+              </div>
+            </button>
+          </Reveal>
+        ))}
       </div>
-    </section>
-  );
-};
 
-export default Gallery; 
+      <p className="mt-8 text-center text-sm text-subtle">
+        More coming soon
+      </p>
+
+      <AnimatePresence>
+        {current && index !== null && (
+          <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label={current.alt}
+            className="fixed inset-0 z-[70] flex items-center justify-center bg-white/95 p-4 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={close}
+          >
+            <motion.div
+              key={current.src}
+              className="relative h-[78vh] w-full max-w-5xl"
+              initial={{ opacity: 0, scale: 0.97 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.25 }}
+            >
+              <Image src={current.src} alt={current.alt} fill sizes="100vw" className="object-contain" />
+            </motion.div>
+            <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center text-sm text-muted">
+              {current.alt} <span className="ml-2 text-subtle">{index + 1}/{GALLERY.length}</span>
+            </p>
+            <button
+              type="button"
+              onClick={close}
+              aria-label="Close"
+              className="absolute right-5 top-5 grid h-11 w-11 place-items-center rounded-full border border-line-strong bg-white text-fg transition hover:bg-surface-2"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            {[
+              { d: -1, label: "Previous photo", Icon: ChevronLeft, pos: "left-3 md:left-6" },
+              { d: 1, label: "Next photo", Icon: ChevronRight, pos: "right-3 md:right-6" },
+            ].map(({ d, label, Icon, pos }) => (
+              <button
+                key={d}
+                type="button"
+                aria-label={label}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  step(d);
+                }}
+                className={`absolute top-1/2 ${pos} grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-line-strong bg-white/90 text-fg transition hover:bg-surface-2`}
+              >
+                <Icon className="h-5 w-5" />
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </Section>
+  );
+}

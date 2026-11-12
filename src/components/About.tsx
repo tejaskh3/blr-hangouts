@@ -1,60 +1,66 @@
+import { Armchair, Coffee, Gamepad2, Lightbulb } from "lucide-react";
 import { WHATSAPP_GROUP_LINK } from "@/constants";
+import { Reveal, Section, SectionHeading, Soft } from "./primitives";
 
-const activities = [
-  {
-    icon: "☕️",
-    title: "Casual Hangouts",
-    desc: "Meetups over chai, coffee, and good vibes in parks, cafes, and malls.",
-  },
-  {
-    icon: "🎮",
-    title: "Gaming & Chit Chat",
-    desc: "Sometimes we just play games, share memes, and talk about life.",
-  },
-  {
-    icon: "💡",
-    title: "Tech Talks",
-    desc: "We love sharing knowledge, discussing new tech, and learning together.",
-  },
-  {
-    icon: "🤷‍♂️",
-    title: "Just Hanging Out",
-    desc: "No agenda, no reason—sometimes we just chill. ¯\\_(ツ)_/¯",
-  },
+const ACTIVITIES = [
+  { icon: Coffee, title: "Casual hangouts", desc: "Meetups over chai, coffee and good vibes in parks, cafés and malls." },
+  { icon: Gamepad2, title: "Gaming & chit-chat", desc: "Sometimes we just play games, share memes and talk about life." },
+  { icon: Lightbulb, title: "Tech talks", desc: "We love sharing knowledge, discussing new tech and learning together." },
+  { icon: Armchair, title: "Just hanging out", desc: "No agenda, no reason. Sometimes we just chill. ¯\\_(ツ)_/¯" },
 ];
 
-const About = () => {
-  return (
-    <section className="bg-black py-24">
-      <div className="container mx-auto px-4">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="mb-8 text-4xl md:text-5xl font-extrabold text-white">About BLR Hangouts</h2>
-          <p className="mb-6 text-lg md:text-xl text-neutral-300 font-medium">
-            We&apos;re a casual community of <span className="font-bold text-white">150+ techies</span> in Bengaluru BLR. No agenda, no slides.<br/>
-            Just honest convos over chai, coffee, park benches, Starbucks, malls and good vibes.
-          </p>
-          <p className="mb-10 text-lg md:text-xl text-neutral-400">
-            Started by <span className="font-semibold text-white hover:text-white/80 underline"><a href="https://x.com/taashuu_" target="_blank" rel="noopener noreferrer">Tejas</a></span> and <span className="font-semibold text-white hover:text-white/80 underline"><a href="https://x.com/lakshayman2000" target="_blank" rel="noopener noreferrer">Lakshay</a></span>, this was our way of staying connected
-            with real people in tech — now its a growing tribe. want to join us? <a href={WHATSAPP_GROUP_LINK} target="_blank" rel="noopener noreferrer" className="text-purple-300 hover:text-purple-400 underline">follow us on twitter</a>
-          </p>
+const link = "font-medium text-fg underline decoration-line-strong underline-offset-4 hover:decoration-fg";
 
-          {/* Activities Section */}
-          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {activities.map((act) => (
-              <div
-                key={act.title}
-                className="flex flex-col items-center bg-neutral-900/80 p-8 rounded-2xl border border-neutral-800 shadow-lg"
-              >
-                <span className="text-4xl mb-4">{act.icon}</span>
-                <h3 className="mb-2 text-xl font-bold text-white">{act.title}</h3>
-                <p className="text-neutral-300 text-center">{act.desc}</p>
-              </div>
-            ))}
-          </div>
+export default function About() {
+  return (
+    <Section id="about" className="border-t border-line">
+      <div className="grid gap-12 md:grid-cols-2 md:gap-16">
+        <div>
+          <SectionHeading
+            eyebrow="About"
+            title={
+              <>
+                Real people in tech, <Soft>offline.</Soft>
+              </>
+            }
+          />
+          <Reveal className="-mt-4 space-y-4 leading-relaxed text-muted">
+            <p>
+              We&apos;re a casual community of <span className="font-medium text-fg">150+ techies</span> in Bengaluru.
+              No agenda, no slides. Just honest convos over chai, coffee, park benches, Starbucks, malls and good
+              vibes.
+            </p>
+            <p>
+              Started by{" "}
+              <a href="https://x.com/taashuu_" target="_blank" rel="noopener noreferrer" className={link}>
+                Tejas
+              </a>{" "}
+              and{" "}
+              <a href="https://x.com/lakshayman2000" target="_blank" rel="noopener noreferrer" className={link}>
+                Lakshay
+              </a>
+              , this was our way of staying connected with real people in tech. Now it&apos;s a growing tribe.
+            </p>
+            <p>
+              Want in?{" "}
+              <a href={WHATSAPP_GROUP_LINK} target="_blank" rel="noopener noreferrer" className={link}>
+                Join the WhatsApp group
+              </a>
+              .
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
+          {ACTIVITIES.map((a) => (
+            <div key={a.title} className="bg-white p-6">
+              <a.icon className="mb-4 h-5 w-5 text-accent" strokeWidth={1.75} />
+              <h3 className="mb-1.5 font-medium text-fg">{a.title}</h3>
+              <p className="text-sm leading-relaxed text-muted">{a.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
-    </section>
+    </Section>
   );
-};
-
-export default About; 
+}

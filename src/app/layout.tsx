@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -13,8 +13,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BLR Hangouts",
-  description: "BLR Hangouts is a community of developers, designers, or tech enthusiasts who meet up to share their knowledge and experiences. It is a platform for developers to connect with each other and share their knowledge and experiences in Bengaluru.",
+  title: "BLR Hangouts: new people, new experiences, new learnings",
+  description:
+    "BLR Hangouts is a casual community of developers, designers and tech enthusiasts in Bengaluru who meet over chai, coffee and good conversation.",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({
